@@ -25,9 +25,7 @@ val buildLibWgGo by tasks.registering(Exec::class) {
             "buildScript/libwg-go/build-libwg-go.ps1"
         )
     } else {
-        doFirst {
-            throw GradleException("Only Windows script is configured right now. Use buildScript/libwg-go/build-libwg-go.ps1.")
-        }
+        commandLine("bash", "buildScript/libwg-go/build-libwg-go.sh")
     }
 }
 
