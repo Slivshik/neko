@@ -32,6 +32,15 @@ jobs:
         run: |
           chmod +x ./gradlew
           chmod +x buildScript/libwg-go/build-libwg-go.sh
+          chmod +x buildScript/lib/core/init.sh
+          chmod +x buildScript/lib/core/get_source.sh
+          chmod +x buildScript/lib/core/build.sh
+
+      - name: Prepare libcore sources
+        run: bash buildScript/lib/core/init.sh
+
+      - name: Build libcore
+        run: bash buildScript/lib/core/build.sh
 
       - name: Build libwg-go
         run: ./gradlew :app:buildLibWgGo --no-daemon --stacktrace
