@@ -28,6 +28,9 @@ jobs:
           echo "ANDROID_HOME=$ANDROID_SDK_ROOT" >> $GITHUB_ENV
           echo "ANDROID_NDK_HOME=$ANDROID_SDK_ROOT/ndk/30.0.14904198" >> $GITHUB_ENV
 
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+
       - name: Build libwg-go
         run: ./gradlew :app:buildLibWgGo --no-daemon --stacktrace
 
