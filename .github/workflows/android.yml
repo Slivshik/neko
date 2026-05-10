@@ -36,11 +36,13 @@ jobs:
           chmod +x buildScript/lib/core/get_source.sh
           chmod +x buildScript/lib/core/build.sh
 
-      - name: Install gomobile-matsuri
-        run: |
-          go version
-          go install ./libcore/gomobile/cmd/gomobile-matsuri
-          echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
+	- name: Install gomobile-matsuri
+	  working-directory: libcore
+	  run: |
+ 	   go version
+	    go install ./gomobile/cmd/gomobile-matsuri
+	    echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
+
 
       - name: Prepare libcore sources
         run: bash buildScript/lib/core/init.sh
